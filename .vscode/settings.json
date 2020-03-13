@@ -8,6 +8,7 @@
     "signup",
     "taskapi",
     "taskmanagement",
+    "tasksecret",
     "typeorm"
   ],
   "cSpell.ignorePaths": [

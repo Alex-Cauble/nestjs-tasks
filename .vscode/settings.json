@@ -5,6 +5,7 @@
     "postgres",
     "prebuild",
     "signup",
+    "taskapi",
     "taskmanagement",
     "typeorm"
   ],

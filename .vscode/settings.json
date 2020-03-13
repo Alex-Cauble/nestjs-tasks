@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["prebuild"],
+  "cSpell.words": [
+    "PGADMIN",
+    "dpage",
+    "postgres",
+    "prebuild",
+    "taskmanagement",
+    "typeorm"
+  ],
   "cSpell.ignorePaths": [
     "**/package-lock.json",
     "**/node_modules/**",

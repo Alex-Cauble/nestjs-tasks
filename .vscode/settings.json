@@ -4,6 +4,7 @@
     "dpage",
     "postgres",
     "prebuild",
+    "signup",
     "taskmanagement",
     "typeorm"
   ],

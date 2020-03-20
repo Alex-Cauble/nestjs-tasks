@@ -48,6 +48,5 @@ export class TasksService {
     if (result.affected === 0) {
       throw new NotFoundException(`Task With id "${id}" not found`);
     }
-    console.log(result);
   }
 }

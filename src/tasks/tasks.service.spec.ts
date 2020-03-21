@@ -3,8 +3,6 @@ import { TasksService } from './tasks.service';
 import { TaskRepository } from './task.repository';
 import { TaskStatus } from './task-status.enum';
 import { TaskFilterDTO } from './dto/tasks-filter.dto';
-import { async } from 'rxjs/internal/scheduler/async';
-import { userInfo } from 'os';
 import { NotFoundException } from '@nestjs/common';
 import { CreateTaskDTO } from './dto/create-task.dto';
 

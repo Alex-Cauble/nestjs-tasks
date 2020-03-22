@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { User } from './user.entity';
 import * as bcrypt from 'bcryptjs';
+import { async } from 'rxjs/internal/scheduler/async';
 
 const mockCredentialsDTO = {
   username: 'TestUsername',
@@ -23,16 +24,35 @@ describe('UserRepository', () => {
   });
 
   describe('method_signUp', () => {
-    let save;
+    let save, hashPassword;
 
     beforeEach(() => {
       save = jest.fn();
-      userRepository.create = jest.fn().mockReturnValue({ save });
+      userRepository.hashPassword = jest.fn();
+      userRepository.create = jest.fn().mockReturnValue({ save, hashPassword });
     });
 
-    it('should successfully sign up the user', () => {
+    it('should successfully sign up the user', async () => {
       save.mockResolvedValue(undefined);
       expect(userRepository.signUp(mockCredentialsDTO)).resolves.not.toThrow();
+    });
+
+    it('should not have a return', async () => {
+      save.mockResolvedValue(undefined);
+      const result = await userRepository.signUp(mockCredentialsDTO);
+      expect(result).toBeUndefined();
+    });
+
+    it('should call method save on the user object', async () => {
+      expect(save).not.toHaveBeenCalled();
+      await userRepository.signUp(mockCredentialsDTO);
+      expect(save).toHaveBeenCalled();
+    });
+
+    it('should call the method hashPassword', async () => {
+      expect(userRepository.hashPassword).not.toHaveBeenCalled();
+      await userRepository.signUp(mockCredentialsDTO);
+      expect(userRepository.hashPassword).toHaveBeenCalled();
     });
 
     it('should throw a conflict exception if the username already exists', () => {

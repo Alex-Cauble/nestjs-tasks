@@ -6,7 +6,6 @@ import {
 } from '@nestjs/common';
 import { User } from './user.entity';
 import * as bcrypt from 'bcryptjs';
-import { async } from 'rxjs/internal/scheduler/async';
 
 const mockCredentialsDTO = {
   username: 'TestUsername',
